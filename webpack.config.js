@@ -9,11 +9,17 @@ module.exports = {
     './src/index.jsx'
   ],
   module: {
-    rules: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loaders: ['babel-loader']
-    }]
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loaders: ['babel-loader']
+      },
+      {
+        test:  /\.css$/,
+        loaders: ['style-loader', 'css-loader?modules'],
+      }
+    ]
   },
   resolve: {
     extensions: ['.js', '.jsx']

@@ -1,27 +1,22 @@
 import React from 'react';
-import {Navbar , Nav , NavItem , NavDropdown , MenuItem} from 'react-bootstrap';
-
+import { withStyles } from 'material-ui/styles';
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from 'material-ui-icons/Menu';
 
 const Header = () =>{
   return(
-    <Navbar>
-      <Nav>
-        <NavItem eventKey={1}>
-          Home
-        </NavItem>
-        <NavItem eventKey={2}>
-          通知 
-        </NavItem>
-        <NavItem eventKey={3}>
-          メッセージ
-        </NavItem>
-      </Nav>
-      <Nav pullRight>
-        <NavDropdown eventKey={4} title="メニュー" id="basic-nav-dropdown">
-          <MenuItem eventKey={4.1}>ログイン</MenuItem>
-        </NavDropdown>
-      </Nav>
-    </Navbar>
+    <AppBar position="static" color="secondary">
+      <Toolbar>
+        <Typography variant="title" color="inherit">
+          Title
+        </Typography>
+        <Button color="inherit">Login</Button>
+      </Toolbar>
+    </AppBar>
   );
 }
 
