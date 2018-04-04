@@ -1,3 +1,5 @@
+import { ActionConst } from 'react-native-router-flux';
+
 const defaultState = {
   isLoggedIn: false,
   email: '',
