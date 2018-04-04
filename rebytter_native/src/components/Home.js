@@ -26,9 +26,6 @@ export default class Home extends Component {
     super(props);
   }
 
-  componentWillMount(){
-      Actions.login();
-  }
   render() {
     return (
       <View style={styles.container}>

@@ -12,7 +12,7 @@ const LoginForm = (props) =>{
         <Label>Password</Label>
         <Input placeholder="パスワード" secureTextEntry={true}/>
       </Item>
-      <Button block>
+      <Button block onPress={(e) => props.onPress(e)}>
         <Text>ログイン</Text>
       </Button>
     </Form>
