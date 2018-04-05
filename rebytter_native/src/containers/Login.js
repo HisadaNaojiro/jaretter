@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { axios } from 'axios';
+import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
 import LoginForm from '../components/LoginForm';
@@ -21,7 +21,6 @@ class Login extends Component {
   userLogin(e){
     this.props.onLogin(this.state.email , this.state.password);
     e.preventDefault();
-    Actions.main();
   }
 
   toggleRoute(e){
@@ -69,24 +68,24 @@ const mapStateToProps = (state , ownProps) =>{
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLogin: (username, password) => { dispatch(login(username, password)); },
-    //onLogin: (email , password) => dispatch(callLoginService(email , password)),
+    //onLogin: (username, password) => { dispatch(login(username, password)); },
+    onLogin: (email , password) => dispatch(callLoginService(email , password)),
     onSignup: (email , password) => { dispatch(signup(email , password)); }
   }
 }
 
-const callLoginService = (email , password) =>{
-  return dispatch =>{
-    dispatch(login(email , password))
-    axios.post('http://localhost:3000?query=sign_in_user',{
+export const callLoginService = (email , password) =>{
+  return dispatch => {
+    dispatch(login(email , password));
+    axios.post('http://localhost:3000/graphql',{
       email: email,
       password: password
     })
     .then(response =>{
-      console.log('success');
+      console.log('success')
     })
     .catch(error => {
-      console.log('error');
+      console.log('error')
     });
   }
 }
