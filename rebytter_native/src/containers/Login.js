@@ -75,17 +75,18 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export const callLoginService = (email , password) =>{
+  //const query = `mutation signinUser($email: email){signinUser(email: email){token user{id}}}`
+  //const variables = {email: {email : email , password: password}};
+  const query = `mutation{signinUser(email: {email: "test@example.com",password: "test"}){token user{id}}}`;
   return dispatch => {
     dispatch(login(email , password));
-    axios.post('http://localhost:3000/graphql',{
-      email: email,
-      password: password
-    })
+    axios.post('http://10.0.2.2:3000/graphql',{query:query})
     .then(response =>{
-      console.log('success')
+      console.log(response);
+      Actions.main();
     })
     .catch(error => {
-      console.log('error')
+      console.log(error);
     });
   }
 }
