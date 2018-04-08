@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import {Router ,Stack , Scene} from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Placeholder from './src/components/Placeholder';
-import Home from './src/components/Home';
+import Home from './src/containers/Home';
 import Login from './src/containers/Login';
 import Signup from './src/containers/Signup';
 
