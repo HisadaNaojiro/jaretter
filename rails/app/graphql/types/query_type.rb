@@ -10,4 +10,10 @@ Types::QueryType = GraphQL::ObjectType.define do
       "Hello World!"
     }
   end
+
+  field :userTweetList, !Types::UserType do
+    resolve ->(_obj, _args, ctx) {
+      ctx[:current_user]
+    }
+  end
 end
