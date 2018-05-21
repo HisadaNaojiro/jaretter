@@ -20,4 +20,4 @@ rails/tmp/*
 rails/.byebug_history
 
 # node_modules
-web/node_modules/*
+rebytter_web/node_modules/*
