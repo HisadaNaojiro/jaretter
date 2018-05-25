@@ -10,24 +10,24 @@ import { Container, Content , Body , Button, Text , Card , CardItem} from 'nativ
 import HeaderField from '../components/HeaderField';
 import FooterField from '../components/FooterField';
 
-type Props = {};
 export default class Home extends Component {
   constructor(props){
     super(props);
   }
-
   render() {
     return (
       <Container>
         <HeaderField />
         <Content>
-           <Card>
-              <CardItem>
-                <Body>
-                  <Text>Sample</Text>
-                </Body>
-              </CardItem>
-           </Card>
+          {this.props.contents.map(contents =>
+             <Card>
+                <CardItem>
+                  <Body>
+                    <Text>{contents}</Text>
+                  </Body>
+                </CardItem>
+             </Card>
+          )}
         </Content>
         <FooterField />
       </Container>

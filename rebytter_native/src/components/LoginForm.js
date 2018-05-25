@@ -6,11 +6,11 @@ const LoginForm = (props) =>{
     <Form>
       <Item stackedLabel>
         <Label>Email</Label>
-        <Input placeholder="メールアドレス" />
+        <Input placeholder="メールアドレス" onChangeText={props.onEmailChange} />
       </Item>
       <Item stackedLabel>
         <Label>Password</Label>
-        <Input placeholder="パスワード" secureTextEntry={true}/>
+        <Input placeholder="パスワード" onChangeText={props.onPasswordChange} secureTextEntry={true}/>
       </Item>
       <Button block onPress={(e) => props.onPress(e)}>
         <Text>ログイン</Text>

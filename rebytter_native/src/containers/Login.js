@@ -16,6 +16,16 @@ class Login extends Component {
       password: ''
     };
     this.userLogin = this.userLogin.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+  }
+
+  handleEmailChange(email){
+    this.setState({email: email})
+  }
+  
+  handlePasswordChange(password){
+    this.setState({password: password})
   }
 
   userLogin(e){
@@ -46,7 +56,7 @@ class Login extends Component {
           <Right />
         </Header>
         <Content>
-          <LoginForm {...this.props} onPress={this.userLogin}/>
+          <LoginForm {...this.props} onPress={this.userLogin} onEmailChange={this.handleEmailChange} onPasswordChange={this.handlePasswordChange}/>
         </Content>
         <Footer>
           <FooterTab>
@@ -68,19 +78,18 @@ const mapStateToProps = (state , ownProps) =>{
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    //onLogin: (username, password) => { dispatch(login(username, password)); },
     onLogin: (email , password) => dispatch(callLoginService(email , password)),
     onSignup: (email , password) => { dispatch(signup(email , password)); }
   }
 }
 
 export const callLoginService = (email , password) =>{
-  //const query = `mutation signinUser($email: email){signinUser(email: email){token user{id}}}`
-  //const variables = {email: {email : email , password: password}};
-  const query = `mutation{signinUser(email: {email: "test@example.com",password: "test"}){token user{id}}}`;
   return dispatch => {
     dispatch(login(email , password));
-    axios.post('http://10.0.2.2:3000/graphql',{query:query})
+    axios.post('http://10.0.2.2:3000/login',{
+        email: email,
+        password: password
+    })
     .then(response =>{
       console.log(response);
       Actions.main();
