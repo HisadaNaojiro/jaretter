@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import Placeholder from './src/components/Placeholder';
 import Login from './src/containers/Login';
 import Signup from './src/containers/Signup';
-import GetTweets from './src/containers/GetTweets';
+import Home from './src/containers/Home';
 
 const RouterWithRedux = connect()(Router);
 export default class App extends Component<Props> {
@@ -23,7 +23,7 @@ export default class App extends Component<Props> {
             <Scene key="login" component={Login} initial={!this.props.isLoggedIn}/>
             <Scene key="signup" component={Signup} />
           </Scene>
-          <Scene key="main" component={GetTweets} initial={this.props.isLoggedIn}/>
+          <Scene key="main" component={Home} initial={this.props.isLoggedIn}/>
         </Scene>
       </RouterWithRedux>
     );
